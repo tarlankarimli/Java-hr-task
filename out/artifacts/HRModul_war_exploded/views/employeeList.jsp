@@ -21,7 +21,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <jsp:include page="navbar.jsp"></jsp:include>
 <div class="container">
-    <a class="btn btn-success" href="${ctx}/employee/new">Add Emplyee</a>
+    <a class="btn btn-success" href="${ctx}/employee/newPerson">Add Emplyee</a>
 
 
     <table class="table table-hover">

@@ -28,7 +28,7 @@ public class RegionsDao {
                 Regions region = new Regions();
 
                 region.setRegionName(resultSet.getString("region_name"));
-                region.setRegionName(resultSet.getString("region_id"));
+                region.setRegionId(resultSet.getInt("region_id"));
 
                 regions.add(region);
             }

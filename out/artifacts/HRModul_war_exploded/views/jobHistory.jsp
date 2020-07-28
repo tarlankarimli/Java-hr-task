@@ -27,15 +27,21 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Region ID</th>
-            <th>Region Name</th>
+            <th>Emkployee ID</th>
+            <th>Department ID</th>
+            <th>Job ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${regionList}" var="region">
+        <c:forEach items="${jobHistorylist}" var="jobHistory">
             <tr>
-                <td> <c:out value="${region.getRegionId()}"/></td>
-                <td> <c:out value="${region.getRegionName()}"/></td>
+                <td> <c:out value="${jobHistory.getEmployeeId() }"/></td>
+                <td> <c:out value="${jobHistory.getDepartmentId() }"/></td>
+                <td> <c:out value="${jobHistory.getJobId() }"/></td>
+                <td> <c:out value="${jobHistory.getStartDate() }"/></td>
+                <td> <c:out value="${jobHistory.getEndDate() }"/></td>
                 <td>
                     <button class="btn button btn-danger">Delete</button>
                     <button class="btn button btn-warning">Udpdate</button></td>

@@ -1,11 +1,11 @@
 package az.hrmodule.domain;
 
 public class Countries {
-    private int countryId;
+    private String countryId;
     private String countryName;
     private int regionId;
 
-    public void setCountryId(int countryId) {
+    public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
 
@@ -17,7 +17,7 @@ public class Countries {
         this.regionId = regionId;
     }
 
-    public int getCountryId() {
+    public String getCountryId() {
         return countryId;
     }
 

@@ -22,7 +22,7 @@
 
 <jsp:include page="navbar.jsp"></jsp:include>
 <div class="container">
-<form action="${ctx}/employee/save" method="post" class="form">
+<form action="${ctx}/employee/saveDepartment" method="post" class="form">
 
     <div class="form-group">
         <label for="id">ID:</label>
@@ -43,7 +43,7 @@
 
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" name="email"  placeholder="email">
+        <input type="email"  id ="email" name="email"  placeholder="email">
     </div>
 
     <div class="form-group">

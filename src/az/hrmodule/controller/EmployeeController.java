@@ -114,17 +114,23 @@ public class EmployeeController extends HttpServlet {
         if(req.getServletPath().equals("/employee/saveDepartment")) {
 
         }
-        if(req.getServletPath().equals("/employee/save")){
+        if(req.getServletPath().equals("/employee/saveCountry")){
 
             CountryDao countryDao=new CountryDao();
             Countries countries=new Countries();
 
-            countries.setCountryId(Integer.parseInt( req.getParameter("country_id")));
+            countries.setCountryId(req.getParameter("country_id"));
             countries.setCountryName(req.getParameter("country_name"));
-            countries.setCountryId(Integer.parseInt( req.getParameter("region_id")));
+            String region = req.getParameter("region_name");
+            switch (region){
+                case "Europe": countries.setRegionId(1); break;
+                case "Americas": countries.setRegionId(2); break;
+                case "Asia": countries.setRegionId(3); break;
+                case "Middle East and Africa": countries.setRegionId(4); break;
+            }
             countryDao.save(countries);
 
-            req.setAttribute("empList",countryDao.getList());
+            req.setAttribute("countryList",countryDao.getList());
             RequestDispatcher requestDispatcher=req.getRequestDispatcher("/views/countryList.jsp");
             requestDispatcher.include(req,resp);
         }

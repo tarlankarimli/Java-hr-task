@@ -13,7 +13,7 @@ import java.util.List;
 public class CountryDao {
 
     private String select_query = "select  * from countries";
-    private String insert_query = "insert into employees (country_id, country_name, region_id) values(?, ? , ?)";
+    private String insert_query = "insert into countries (country_id, country_name, region_id) values(?, ? ,?)";
 
 
     public List<Countries> getList() {
@@ -28,7 +28,7 @@ public class CountryDao {
             while (resultSet.next()) {
                 Countries country = new Countries();
 
-                country.setCountryId(resultSet.getInt("country_id"));
+                country.setCountryId(resultSet.getString("country_id"));
                 country.setCountryName(resultSet.getString("country_name"));
                 country.setRegionId(resultSet.getInt("region_id"));
 
@@ -51,9 +51,10 @@ public class CountryDao {
         try {
             Connection conn = dbConfig.getConnect();
             PreparedStatement ps = conn.prepareStatement(insert_query);
-            ps.setInt(1, countries.getCountryId());
+            ps.setString(1, countries.getCountryId());
             ps.setString(2, countries.getCountryName());
             ps.setInt(3, countries.getRegionId());
+            System.out.println();
 
             result = ps.executeUpdate();
 

@@ -32,7 +32,7 @@
             <li><a href="${ctx}/employee/department_list">Departments</a></li>
             <li><a href="${ctx}/employee/job_history">Job History</a></li>
             <li><a href="${ctx}/employee/regions">Regions</a></li>
-            <li><a href="${ctx}/employee/countries">Regions</a></li>
+            <li><a href="${ctx}/employee/countries">Countries</a></li>
         </ul>
     </div>
 </nav>

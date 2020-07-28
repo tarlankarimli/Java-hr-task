@@ -13,10 +13,17 @@
     <servlet-mapping>
         <servlet-name>employee</servlet-name>
         <url-pattern>/employee/list</url-pattern>
-        <url-pattern>/employee/new</url-pattern>
+        <url-pattern>/employee/newPerson</url-pattern>
         <url-pattern>/employee/save</url-pattern>
         <url-pattern>/employee/edit</url-pattern>
         <url-pattern>/employee/delete</url-pattern>
+        <url-pattern>/employee/job_history</url-pattern>
+        <url-pattern>/employee/department_list</url-pattern>
+        <url-pattern>/employee/newDepartment</url-pattern>
+        <url-pattern>/employee/regions</url-pattern>
+        <url-pattern>/employee/countries</url-pattern>
+        <url-pattern>/employee/newCountry</url-pattern>
+        <url-pattern>/employee/saveCountry</url-pattern>
 
     </servlet-mapping>
 
