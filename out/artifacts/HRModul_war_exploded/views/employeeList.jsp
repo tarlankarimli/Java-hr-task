@@ -58,7 +58,7 @@
 
                 <td>
                     <button class="btn button btn-danger">Delete</button>
-                    <button class="btn button btn-warning">Udpdate</button></td>
+                    <a class="btn button btn-warning" href="${ctx}/employee/edit?employeeId=${employee.getEmployeeId()}">Udpdate</a></td>
 
             </tr>
 

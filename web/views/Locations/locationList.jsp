@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Locations</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -19,23 +19,31 @@
 </head>
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-
-
+    <a class="btn btn-success" href="${ctx}/newLocation">Add Location</a>
 
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Region ID</th>
-            <th>Region Name</th>
+            <th>Location ID</th>
+            <th>Street name</th>
+            <th>Postal code</th>
+            <th>City</th>
+            <th>State Province</th>
+            <th>Country ID</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${regionList}" var="region">
+        <c:forEach items="${locationList}" var="location">
             <tr>
-                <td> <c:out value="${region.getRegionId()}"/></td>
-                <td> <c:out value="${region.getRegionName()}"/></td>
+                <td> <c:out value="${location.getLocationId() }"/></td>
+                <td> <c:out value="${location.getStreetAddress() }"/></td>
+                <td> <c:out value="${location.getPostalCode() }"/></td>
+                <td> <c:out value="${location.getCity() }"/></td>
+                <td> <c:out value="${location.getStateProvince() }"/></td>
+                <td> <c:out value="${location.getCountryId() }"/></td>
+
                 <td>
                     <button class="btn button btn-danger">Delete</button>
                     <button class="btn button btn-warning">Udpdate</button></td>

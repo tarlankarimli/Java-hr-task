@@ -20,9 +20,9 @@
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-    <form action="${ctx}/employee/saveCountry" method="post" class="form">
+    <form action="${ctx}/saveCountry" method="post" class="form">
 
         <div class="form-group">
             <label for="id">Country ID:</label>

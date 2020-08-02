@@ -19,25 +19,23 @@
 </head>
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-    <a class="btn btn-success" href="${ctx}/employee/newCountry">Add Country</a>
+
+
 
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Country ID</th>
-            <th>Country Name</th>
             <th>Region ID</th>
+            <th>Region Name</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${countryList}" var="country">
+        <c:forEach items="${regionList}" var="region">
             <tr>
-                <td> <c:out value="${country.getCountryId() }"/></td>
-                <td> <c:out value="${country.getCountryName() }"/></td>
-                <td> <c:out value="${country.getRegionId() }"/></td>
-
+                <td> <c:out value="${region.getRegionId()}"/></td>
+                <td> <c:out value="${region.getRegionName()}"/></td>
                 <td>
                     <button class="btn button btn-danger">Delete</button>
                     <button class="btn button btn-warning">Udpdate</button></td>
