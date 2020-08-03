@@ -25,7 +25,7 @@
 
     <div class="form-group">
         <label for="id">ID:</label>
-        <input type="number" name="id" id="id" placeholder="name" readonly value="${employee.getEmployeeId()}">
+        <input type="number" name="id" id="id" placeholder="name" value="${employee.getEmployeeId()}">
     </div>
 
     <div class="form-group">

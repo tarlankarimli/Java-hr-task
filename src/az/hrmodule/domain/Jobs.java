@@ -1,6 +1,6 @@
 package az.hrmodule.domain;
 
-public class Job {
+public class Jobs {
     private String jobId;
     private String jobTitle;
     private int maxSalary;

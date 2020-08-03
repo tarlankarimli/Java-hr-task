@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Departments</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -19,17 +19,17 @@
 </head>
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-    <a class="btn btn-success" href="${ctx}/employee/newDepartment">Add Department</a>
+    <a class="btn btn-success" href="${ctx}/newDepartment">Add Department</a>
 
     <table class="table table-hover">
         <thead>
         <tr>
             <th>Department ID</th>
             <th>Department Name</th>
-            <th>Location ID</th>
             <th>Manager ID</th>
+            <th>Location ID</th>
         </tr>
         </thead>
         <tbody>
@@ -37,8 +37,8 @@
             <tr>
                 <td> <c:out value="${department.getDepartmentId() }"/></td>
                 <td> <c:out value="${department.getDepartmentName() }"/></td>
-                <td> <c:out value="${department.getLocationId() }"/></td>
                 <td> <c:out value="${department.getManagerId() }"/></td>
+                <td> <c:out value="${department.getLocationId() }"/></td>
 
                 <td>
                     <button class="btn button btn-danger">Delete</button>

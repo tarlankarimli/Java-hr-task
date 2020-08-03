@@ -1,8 +1,6 @@
 package az.hrmodule.dao;
 
 import az.hrmodule.config.DBConfig;
-import az.hrmodule.domain.Department;
-import az.hrmodule.domain.Job;
 import az.hrmodule.domain.Regions;
 
 import java.sql.Connection;
@@ -11,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegionsDao {
+public class RegionsDao extends  Database{
 
     private String select_query = "select  * from regions";
 
@@ -20,9 +18,9 @@ public class RegionsDao {
         List<Regions> regions = new ArrayList<>();
 
         try {
-            Connection conn = dbConfig.getConnect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(select_query);
+            conn = dbConfig.getConnect();
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(select_query);
 
             while (resultSet.next()) {
                 Regions region = new Regions();
@@ -33,8 +31,7 @@ public class RegionsDao {
                 regions.add(region);
             }
 
-
-            conn.close();
+            close();
         } catch (Exception e) {
             e.printStackTrace();
 

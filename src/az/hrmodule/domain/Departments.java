@@ -1,11 +1,11 @@
 package az.hrmodule.domain;
 
-public class Department {
+public class Departments {
 
-    private String departmentName;
     private int departmentId;
-    private int locationId;
+    private String departmentName;
     private int managerId;
+    private int locationId;
 
     public String getDepartmentName() {
         return departmentName;

@@ -20,8 +20,8 @@
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <jsp:include page="navbar.jsp"></jsp:include>
-<div class="container">
-    <a class="btn btn-success" href="${ctx}/employee/newPerson">Add Emplyee</a>
+<div class="container-fluid">
+    <a class="btn btn-success" href="${ctx}/employee/newPerson">Add Employee</a>
 
 
     <table class="table table-hover">
@@ -58,7 +58,7 @@
 
                 <td>
                     <button class="btn button btn-danger">Delete</button>
-                    <a class="btn button btn-warning" href="${ctx}/employee/edit?employeeId=${employee.getEmployeeId()}">Udpdate</a></td>
+                    <a class="btn button btn-warning" href="${ctx}/employee/edit?employeeId=${employee.getEmployeeId()}">Update</a></td>
 
             </tr>
 

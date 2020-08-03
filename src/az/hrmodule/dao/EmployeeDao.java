@@ -7,8 +7,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDao {
-    private String select_query = "select  * from employees";
+public class EmployeeDao extends Database {
+    private String select_query = "select  * from employees order by employee_id asc";
 
     private String insert_query = "insert into employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID) values(employee_id_sq.nextval,?,?,?,?,sysdate,?,?,?,?,?)";
     private String update_query = "  UPDATE employees  set   FIRST_NAME=?, LAST_NAME=?, EMAIL=?,    PHONE_NUMBER=?, JOB_ID=?, SALARY=?, COMMISSION_PCT=?,     MANAGER_ID=?, DEPARTMENT_ID=?     WHERE employee_id=?";
@@ -18,9 +18,9 @@ public class EmployeeDao {
         List<Employee> employees = new ArrayList<>();
 
         try {
-            Connection conn = dbConfig.getConnect();
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(select_query);
+            conn = dbConfig.getConnect();
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(select_query);
 
             while (resultSet.next()) {
                 Employee employee = new Employee();
@@ -40,7 +40,7 @@ public class EmployeeDao {
             }
 
 
-            conn.close();
+            close();
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -52,10 +52,10 @@ public class EmployeeDao {
         DBConfig dbConfig = new DBConfig();
         Employee employee = new Employee();
         try {
-            Connection conn = dbConfig.getConnect();
-            PreparedStatement  statement = conn.prepareStatement(select_query+" where employee_id=?");
-            statement.setString(1,employeeId);
-            ResultSet resultSet = statement.executeQuery();
+            conn = dbConfig.getConnect();
+            preparedStatement = conn.prepareStatement("select  * from employees where employee_id=?");
+            preparedStatement.setString(1,employeeId);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
 
@@ -71,7 +71,7 @@ public class EmployeeDao {
                 employee.setSalary(resultSet.getDouble("salary"));
                 employee.setHireDate(resultSet.getDate("hire_date"));
             }
-            conn.close();
+            close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,22 +84,22 @@ public class EmployeeDao {
 
         int result = 0;
         try {
-            Connection conn = dbConfig.getConnect();
-            PreparedStatement ps = conn.prepareStatement(insert_query);
-            ps.setString(1, employee.getFirstName());
-            ps.setString(2, employee.getLastName());
-            ps.setString(3, employee.getEmail());
-            ps.setString(4, employee.getPhoneNumber());
-            ps.setString(5, employee.getJobId());
-            ps.setDouble(6, employee.getSalary());
-            ps.setDouble(7, employee.getCommissionPct());
-            ps.setInt(8, employee.getManagerId());
-            ps.setInt(9, employee.getDepartmentId());
+            conn = dbConfig.getConnect();
+            preparedStatement = conn.prepareStatement(insert_query);
+            preparedStatement.setString(1, employee.getFirstName());
+            preparedStatement.setString(2, employee.getLastName());
+            preparedStatement.setString(3, employee.getEmail());
+            preparedStatement.setString(4, employee.getPhoneNumber());
+            preparedStatement.setString(5, employee.getJobId());
+            preparedStatement.setDouble(6, employee.getSalary());
+            preparedStatement.setDouble(7, employee.getCommissionPct());
+            preparedStatement.setInt(8, employee.getManagerId());
+            preparedStatement.setInt(9, employee.getDepartmentId());
 
-            result = ps.executeUpdate();
+            result = preparedStatement.executeUpdate();
 
 
-            conn.close();
+            close();
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -113,24 +113,24 @@ public class EmployeeDao {
 
         int result = 0;
         try {
-            Connection conn = dbConfig.getConnect();
-            PreparedStatement ps = conn.prepareStatement(update_query);
-            ps.setString(1, employee.getFirstName());
-            ps.setString(2, employee.getLastName());
-            ps.setString(3, employee.getEmail());
-            ps.setString(4, employee.getPhoneNumber());
+            conn = dbConfig.getConnect();
+            preparedStatement = conn.prepareStatement(update_query);
+            preparedStatement.setString(1, employee.getFirstName());
+            preparedStatement.setString(2, employee.getLastName());
+            preparedStatement.setString(3, employee.getEmail());
+            preparedStatement.setString(4, employee.getPhoneNumber());
            // ps.setDate(5, (Date) employee.getHireDate());
-            ps.setString(5, employee.getJobId());
-            ps.setDouble(6, employee.getSalary());
-            ps.setDouble(7, employee.getCommissionPct());
-            ps.setInt(8, employee.getManagerId());
-            ps.setInt(9, employee.getDepartmentId());
-            ps.setInt(10, employee.getEmployeeId());
+            preparedStatement.setString(5, employee.getJobId());
+            preparedStatement.setDouble(6, employee.getSalary());
+            preparedStatement.setDouble(7, employee.getCommissionPct());
+            preparedStatement.setInt(8, employee.getManagerId());
+            preparedStatement.setInt(9, employee.getDepartmentId());
+            preparedStatement.setInt(10, employee.getEmployeeId());
 
-            result = ps.executeUpdate();
+            result = preparedStatement.executeUpdate();
 
 
-            conn.close();
+            close();
         } catch (Exception e) {
             e.printStackTrace();
 

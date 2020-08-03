@@ -18,9 +18,6 @@
         <url-pattern>/employee/edit</url-pattern>
         <url-pattern>/employee/updateEmployee</url-pattern>
         <url-pattern>/employee/delete</url-pattern>
-        <url-pattern>/employee/job_history</url-pattern>
-        <url-pattern>/employee/department_list</url-pattern>
-        <url-pattern>/employee/newDepartment</url-pattern>
 
 
     </servlet-mapping>
@@ -35,6 +32,44 @@
         <servlet-name>registration</servlet-name>
         <url-pattern>/login</url-pattern>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+<!--    Job history-->
+    <servlet>
+        <servlet-name>jobHistory</servlet-name>
+        <servlet-class>az.hrmodule.controller.JobHistoryController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jobHistory</servlet-name>
+        <url-pattern>/jobHistory</url-pattern>
+        <url-pattern>/saveJobHistory</url-pattern>
+    </servlet-mapping>
+
+<!--    Jobs-->
+    <servlet>
+        <servlet-name>jobs</servlet-name>
+        <servlet-class>az.hrmodule.controller.JobsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jobs</servlet-name>
+        <url-pattern>/jobs</url-pattern>
+        <url-pattern>/newJob</url-pattern>
+        <url-pattern>/saveJob</url-pattern>
+    </servlet-mapping>
+
+<!--    Departments-->
+    <servlet>
+        <servlet-name>departments</servlet-name>
+        <servlet-class>az.hrmodule.controller.DepartmentsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>departments</servlet-name>
+        <url-pattern>/departments</url-pattern>
+        <url-pattern>/newDepartment</url-pattern>
+        <url-pattern>/saveDepartment</url-pattern>
     </servlet-mapping>
 
 <!--    Locations-->

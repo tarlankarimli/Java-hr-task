@@ -12,7 +12,7 @@ import java.util.List;
 
 public class LocationDao extends Database {
 
-    private String select_query = "select  * from locations";
+    private String select_query = "select  * from locations order by location_id asc";
     private String insert_query = "insert into locations (location_id, street_address, postal_code,city,state_province,country_id) values(?, ? ,?,?,?,?)";
 
 
@@ -22,7 +22,7 @@ public class LocationDao extends Database {
 
         try {
             conn = dbConfig.getConnect();
-            Statement statement = conn.createStatement();
+            statement = conn.createStatement();
             resultSet = statement.executeQuery(select_query);
 
             while (resultSet.next()) {

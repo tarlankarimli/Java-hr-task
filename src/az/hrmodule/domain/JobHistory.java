@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class JobHistory {
     private int employeeId;
+    private Date startDate;
+    private Date endDate;
+    private String jobId;
     private int departmentId;
-    private int jobId;
-    private java.util.Date startDate;
-    private java.util.Date endDate;
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
@@ -17,7 +17,7 @@ public class JobHistory {
         this.departmentId = departmentId;
     }
 
-    public void setJobId(int jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
@@ -37,7 +37,7 @@ public class JobHistory {
         return departmentId;
     }
 
-    public int getJobId() {
+    public String getJobId() {
         return jobId;
     }
 

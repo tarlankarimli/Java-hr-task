@@ -20,46 +20,35 @@
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-    <form action="${ctx}/employee/saveDepartment" method="post" class="form">
+    <form action="${ctx}/saveDepartment" method="post" class="form">
 
         <div class="form-group">
-            <label for="id">Department ID:</label>
-            <input type="number" name="id" id="id" placeholder="name" disabled readonly>
+            <label for="department_id">Department ID:</label>
+            <input type="number" name="department_id" id="department_id" placeholder="Department ID">
         </div>
 
         <div class="form-group">
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name"  placeholder="first name">
-        </div>
-
-
-        <div class="form-group">
-            <label for="job">Select Job:</label>
-            <select class="form-control" id="sel1"  name="job_id">
-                <c:forEach items="${jobList}" var="job">
-                    <option value='<c:out value="${job.getJobId()}"></c:out>' > <c:out value="${job.getJobTitle()}"></c:out></option>
-                </c:forEach>
-            </select>
+            <label for="department_name">Department name:</label>
+            <input type="text" name="department_name" id="department_name" placeholder="Department name">
         </div>
         <div class="form-group">
-            <label for="department">Select Department:</label>
-            <select class="form-control" id="sel21"  name="department_id">
-                <c:forEach items="${deptList}" var="dept">
-                    <option value='<c:out value="${dept.getDepartmentId()}"></c:out>' > <c:out value="${dept.getDepartmentName()}"></c:out></option>
-                </c:forEach>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="manager">Select Manager:</label>
-            <select class="form-control" id="selw21"  name="manager_id">
+            <label for="manager_id">Select Manager:</label>
+            <select class="form-control" id="manager_id"  name="manager_id">
                 <c:forEach items="${empList}" var="emp">
                     <option value='<c:out value="${emp.getEmployeeId()}"></c:out>' >
                         <c:out value="${emp.getFirstName()}"></c:out>
                         <c:out value="${emp.getLastName()}"></c:out>
                     </option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="location_id">Select Location:</label>
+            <select class="form-control" id="location_id"  name="location_id">
+                <c:forEach items="${locationList}" var="location">
+                    <option value='<c:out value="${location.getLocationId()}"></c:out>' > <c:out value="${location.getLocationId()}"></c:out></option>
                 </c:forEach>
             </select>
         </div>

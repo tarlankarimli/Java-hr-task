@@ -28,13 +28,13 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="${ctx}/employee/list">HR System</a>
+            <a class="navbar-brand" href="${ctx}/employee/list">LUCK SYSTEM LTD</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="${ctx}/employee/list">Employees</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="${ctx}/employee/department_list">Departments</a></li>
-            <li><a href="${ctx}/employee/job_history">Job History</a></li>
+            <li><a href="${ctx}/employee/list">Employees</a></li>
+            <li><a href="${ctx}/jobHistory">Job History</a></li>
+            <li><a href="${ctx}/jobs">Jobs</a></li>
+            <li><a href="${ctx}/departments">Departments</a></li>
             <li><a href="${ctx}/locations">Locations</a></li>
             <li><a href="${ctx}/countries">Countries</a></li>
             <li><a href="${ctx}/regions">Regions</a></li>

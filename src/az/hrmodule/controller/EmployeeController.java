@@ -29,14 +29,14 @@ public class EmployeeController extends HttpServlet {
             if (req.getServletPath().equals("/employee/newPerson")) {
 
                 EmployeeDao employeeDao = new EmployeeDao();
-                JobDao jobDao = new JobDao();
+                JobsDao jobsDao = new JobsDao();
                 DepartmentDao departmentDao = new DepartmentDao();
 
             /*for(Employee e:employeeDao.getList()){
                 System.out.println(e.getDepartmentId());
             }*/
                 req.setAttribute("empList", employeeDao.getList());
-                req.setAttribute("jobList", jobDao.getList());
+                req.setAttribute("jobList", jobsDao.getList());
                 req.setAttribute("deptList", departmentDao.getList());
                 req.setAttribute("action", "saveEmployee");
                 req.setAttribute("employee", new Employee());
@@ -47,40 +47,17 @@ public class EmployeeController extends HttpServlet {
             if(req.getServletPath().equals("/employee/edit")) {
                 String employeeId = req.getParameter("employeeId");
                 EmployeeDao employeeDao = new EmployeeDao();
-                JobDao jobDao = new JobDao();
+                JobsDao jobsDao = new JobsDao();
                 DepartmentDao departmentDao = new DepartmentDao();
                 Employee employee = employeeDao.getEmployee(employeeId);
 
                 req.setAttribute("empList", employeeDao.getList());
-                req.setAttribute("jobList", jobDao.getList());
+                req.setAttribute("jobList", jobsDao.getList());
                 req.setAttribute("deptList", departmentDao.getList());
                 req.setAttribute("action", "updateEmployee");
                 req.setAttribute("employee", employee);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/employeeForm.jsp");
                 requestDispatcher.include(req, resp);
-            }
-
-            if (req.getServletPath().equals("/job_history")) {
-                JobHistoryDao jobHistoryDao = new JobHistoryDao();
-                req.setAttribute("jobHistorylist", jobHistoryDao.getList());
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/jobHistory.jsp");
-                requestDispatcher.include(req, resp);
-            }
-
-            if (req.getServletPath().equals("employee/department_list")) {
-                DepartmentDao departmentDao = new DepartmentDao();
-                req.setAttribute("departmentList", departmentDao.getList());
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/departmentList.jsp");
-                requestDispatcher.include(req, resp);
-            }
-
-//        not completed
-            if (req.getServletPath().equals("/employee/newDepartment")) {
-                DepartmentDao departmentDao = new DepartmentDao();
-                Locations location = new Locations();
-                Employee employee = new Employee();
-
-                req.setAttribute("deptList", departmentDao.getList());
             }
 
 
@@ -114,7 +91,6 @@ public class EmployeeController extends HttpServlet {
         }
 
             if(req.getServletPath().equals("/employee/updateEmployee")){
-                System.out.println("it is testing update");
                 EmployeeDao employeeDao=new EmployeeDao();
                 Employee employee=new Employee();
 
@@ -134,10 +110,6 @@ public class EmployeeController extends HttpServlet {
                 RequestDispatcher requestDispatcher=req.getRequestDispatcher("/views/employeeList.jsp");
                 requestDispatcher.include(req,resp);
             }
-
-        if(req.getServletPath().equals("/employee/saveDepartment")) {
-
-        }
 
 //        }else {
 //            resp.sendRedirect(req.getContextPath() + "/login");

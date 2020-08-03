@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Jobs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -19,29 +19,27 @@
 </head>
 <body>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="../navbar.jsp"></jsp:include>
 <div class="container">
-
-
+    <a class="btn btn-success" href="${ctx}/newJob">Add Job</a>
 
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Emkployee ID</th>
-            <th>Department ID</th>
             <th>Job ID</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Job Title</th>
+            <th>Minimum Salary</th>
+            <th>Maximum Salary</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${jobHistorylist}" var="jobHistory">
+        <c:forEach items="${jobList}" var="job">
             <tr>
-                <td> <c:out value="${jobHistory.getEmployeeId() }"/></td>
-                <td> <c:out value="${jobHistory.getDepartmentId() }"/></td>
-                <td> <c:out value="${jobHistory.getJobId() }"/></td>
-                <td> <c:out value="${jobHistory.getStartDate() }"/></td>
-                <td> <c:out value="${jobHistory.getEndDate() }"/></td>
+                <td> <c:out value="${job.getJobId() }"/></td>
+                <td> <c:out value="${job.getJobTitle() }"/></td>
+                <td> <c:out value="${job.getMinSalary() }"/></td>
+                <td> <c:out value="${job.getMaxSalary() }"/></td>
+
                 <td>
                     <button class="btn button btn-danger">Delete</button>
                     <button class="btn button btn-warning">Udpdate</button></td>
