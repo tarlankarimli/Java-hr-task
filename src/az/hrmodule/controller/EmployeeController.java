@@ -60,6 +60,19 @@ public class EmployeeController extends HttpServlet {
                 requestDispatcher.include(req, resp);
             }
 
+            if(req.getServletPath().equals("/employee/edit/position")) {
+                String employeeId = req.getParameter("employeeId");
+                EmployeeDao employeeDao = new EmployeeDao();
+                JobsDao jobsDao = new JobsDao();
+                Employee employee = employeeDao.getEmployee(employeeId);
+
+                req.setAttribute("empList", employeeDao.getList());
+                req.setAttribute("jobList", jobsDao.getList());
+                req.setAttribute("action", "updateJob");
+                req.setAttribute("employee", employee);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/Employees/position.jsp");
+                requestDispatcher.include(req, resp);
+            }
 
         }else {
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -94,13 +107,10 @@ public class EmployeeController extends HttpServlet {
                 EmployeeDao employeeDao=new EmployeeDao();
                 Employee employee=new Employee();
 
-                employee.setManagerId(Integer.parseInt( req.getParameter("manager_id")));
-                employee.setDepartmentId(Integer.parseInt( req.getParameter("department_id")));
                 employee.setFirstName(req.getParameter("first_name"));
                 employee.setLastName(req.getParameter("last_name"));
                 employee.setEmail(req.getParameter("email"));
                 employee.setPhoneNumber(req.getParameter("phone_number"));
-                employee.setJobId(req.getParameter("job_id"));
                 employee.setCommissionPct(Double.parseDouble(req.getParameter("commission_pct")));
                 employee.setSalary(Double.parseDouble(req.getParameter("salary")));
                 employee.setEmployeeId(Integer.parseInt( req.getParameter("id")));
@@ -110,6 +120,19 @@ public class EmployeeController extends HttpServlet {
                 RequestDispatcher requestDispatcher=req.getRequestDispatcher("/views/employeeList.jsp");
                 requestDispatcher.include(req,resp);
             }
+
+        if(req.getServletPath().equals("/employee/updateJob")){
+            EmployeeDao employeeDao=new EmployeeDao();
+            Employee employee=new Employee();
+
+            employee.setJobId(req.getParameter("job_id"));
+            //employee.setEmployeeId(Integer.parseInt( req.getParameter("id")));
+            employeeDao.updateJob(employee);
+
+            req.setAttribute("empList",employeeDao.getList());
+            RequestDispatcher requestDispatcher=req.getRequestDispatcher("/views/employeeList.jsp");
+            requestDispatcher.include(req,resp);
+        }
 
 //        }else {
 //            resp.sendRedirect(req.getContextPath() + "/login");

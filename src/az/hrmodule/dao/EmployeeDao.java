@@ -11,7 +11,8 @@ public class EmployeeDao extends Database {
     private String select_query = "select  * from employees order by employee_id asc";
 
     private String insert_query = "insert into employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID) values(employee_id_sq.nextval,?,?,?,?,sysdate,?,?,?,?,?)";
-    private String update_query = "  UPDATE employees  set   FIRST_NAME=?, LAST_NAME=?, EMAIL=?,    PHONE_NUMBER=?, JOB_ID=?, SALARY=?, COMMISSION_PCT=?,     MANAGER_ID=?, DEPARTMENT_ID=?     WHERE employee_id=?";
+    private String update_query = "  UPDATE employees  set   FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE_NUMBER=?, SALARY=?, COMMISSION_PCT=?    WHERE employee_id=?";
+    private String updateJob_query = "  UPDATE employees  set   JOB_ID=?  WHERE employee_id=?";
 
     public List<Employee> getList() {
         DBConfig dbConfig = new DBConfig();
@@ -113,6 +114,7 @@ public class EmployeeDao extends Database {
 
         int result = 0;
         try {
+            System.out.println("rrrrr10"+employee);
             conn = dbConfig.getConnect();
             preparedStatement = conn.prepareStatement(update_query);
             preparedStatement.setString(1, employee.getFirstName());
@@ -120,15 +122,11 @@ public class EmployeeDao extends Database {
             preparedStatement.setString(3, employee.getEmail());
             preparedStatement.setString(4, employee.getPhoneNumber());
            // ps.setDate(5, (Date) employee.getHireDate());
-            preparedStatement.setString(5, employee.getJobId());
-            preparedStatement.setDouble(6, employee.getSalary());
-            preparedStatement.setDouble(7, employee.getCommissionPct());
-            preparedStatement.setInt(8, employee.getManagerId());
-            preparedStatement.setInt(9, employee.getDepartmentId());
-            preparedStatement.setInt(10, employee.getEmployeeId());
+            preparedStatement.setDouble(5, employee.getSalary());
+            preparedStatement.setDouble(6, employee.getCommissionPct());
+            preparedStatement.setInt(7, employee.getEmployeeId());
 
             result = preparedStatement.executeUpdate();
-
 
             close();
         } catch (Exception e) {
@@ -136,6 +134,26 @@ public class EmployeeDao extends Database {
 
         }
         return result;
+    }
 
+    public int updateJob(Employee employee) {
+        DBConfig dbConfig = new DBConfig();
+
+        int result = 0;
+        try {
+            conn = dbConfig.getConnect();
+            preparedStatement = conn.prepareStatement(updateJob_query);
+            // ps.setDate(5, (Date) employee.getHireDate());
+            preparedStatement.setString(1, employee.getJobId());
+            //preparedStatement.setInt(10, employee.getEmployeeId());
+
+            result = preparedStatement.executeUpdate();
+
+            close();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return result;
     }
 }

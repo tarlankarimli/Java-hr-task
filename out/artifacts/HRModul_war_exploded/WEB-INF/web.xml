@@ -18,6 +18,8 @@
         <url-pattern>/employee/edit</url-pattern>
         <url-pattern>/employee/updateEmployee</url-pattern>
         <url-pattern>/employee/delete</url-pattern>
+        <url-pattern>/employee/edit/position</url-pattern>
+        <url-pattern>/employee/updateJob</url-pattern>
 
 
     </servlet-mapping>

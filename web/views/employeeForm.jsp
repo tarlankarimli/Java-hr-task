@@ -59,36 +59,17 @@
         <label for="commission_pct">Commission:</label>
         <input type="number" name="commission_pct" id="commission_pct" placeholder="commision" value="${employee.getCommissionPct()}">
     </div>
-
-
     <div class="form-group">
-        <label for="job">Select Job:</label>
-        <select class="form-control" id="job"  name="job_id">
-            <c:forEach items="${jobList}" var="job">
-                <option value='<c:out value="${job.getJobId()}"></c:out>' > <c:out value="${job.getJobTitle()}"></c:out></option>
-            </c:forEach>
-        </select>
+        <label for="job">Job Title:</label>
+        <input type="text" name="job" id="job" value="${employee.getJobId()}">
+        <a class="btn button btn-danger" href="${ctx}/employee/edit/position?employeeId=${employee.getEmployeeId()}">Update</a></td>
     </div>
     <div class="form-group">
-        <label for="department">Select Department:</label>
-        <select class="form-control" id="department"  name="department_id">
-            <c:forEach items="${deptList}" var="dept">
-                <option value='<c:out value="${dept.getDepartmentId()}"></c:out>' > <c:out value="${dept.getDepartmentName()}"></c:out></option>
-            </c:forEach>
-        </select>
+        <label for="department">Department:</label>
+        <input type="text" name="department" id="department" disabled readonly value="${employee.getDepartmentId()}">
     </div>
-
-    <div class="form-group">
-        <label for="manager">Select Manager:</label>
-        <select class="form-control" id="manager"  name="manager_id">
-            <c:forEach items="${empList}" var="emp">
-                <option value='<c:out value="${emp.getEmployeeId()}"></c:out>' >
-                    <c:out value="${emp.getFirstName()}"></c:out>
-                    <c:out value="${emp.getLastName()}"></c:out>
-                </option>
-            </c:forEach>
-        </select>
-    </div>
+    <br/>
+    <h3>${employee.getFirstName()}'s manager: ${employee.getManagerId()}</h3>
 
     <input type="submit" class="btn btn-success" value="Submit">
 </form>
